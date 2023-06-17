@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
     updateQRCode(universalLink);
 
     connector.onStatusChange((walletInfo) {
-      logger.i('Произошло изменение подключения');
+      logger.i('Connection changed');
     });
   }
 
@@ -81,14 +81,14 @@ class _MyHomePageState extends State<MyHomePage> {
     if (connector.connected) {
       connector.disconnect();
     } else {
-      logger.i("Сначала коннект, потом дисконект");
+      logger.i("First you need to connect");
     }
   }
 
   /// Send transaction with specified data.
   void sendTrx() async {
     if (!connector.connected) {
-      logger.i("Сначала коннект, потом дисконект");
+      logger.i("First you need to connect");
     } else {
       const transaction = {
         "validUntil": 1918097354,
